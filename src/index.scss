@@ -1,0 +1,39 @@
+body{
+    background-color:#C70D8F;
+}
+#menu{
+    background-color: black;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.label{
+    color: white;
+    font-size: 13px;
+}
+.input{
+    background-color: rgba(212, 208, 208, 0.822);
+    border-radius: 10px;
+    border: 0px;
+    &::placeholder{
+        color: white;
+    }
+    
+}
+.contents{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+#login-submit{
+    width: 100%;
+    background-color:#ECB00C ;
+    color:black;
+    border-radius: 30px;
+}
+#signup-redirect{
+    
+    width: 50%;
+    background-color:#0AF7FF ;
+    color:black;
+    border-radius: 30px;
+}
