@@ -24,6 +24,21 @@ body{
     margin-left: 40px;
     margin-right: 40px;
 }
+.header{
+
+    width: 200px;
+    padding: 10px;
+    border-radius: 500%;
+    & label
+    {
+        color: white;
+    }
+}
+// img{
+//     width: 10px;
+//     height: 50px;
+// }
+// ========================= login css ==============================
 #login-submit{
     width: 100%;
     background-color:#ECB00C ;
@@ -37,3 +52,5 @@ body{
     color:black;
     border-radius: 30px;
 }
+
+// ========================= signup css ==============================
