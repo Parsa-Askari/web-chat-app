@@ -1,20 +1,51 @@
 import { Link } from 'react-router-dom';
 import login_logo from './assets/login_avatar.png';
 import { useState } from 'react';
+import { alerts } from '../../utils/alerts';
+import { useNavigate } from "react-router-dom";
+import { Tooltip, OverlayTrigger, Form } from 'react-bootstrap';
 function Login()
 {
+    const navigate = useNavigate();
     const [formData,SetFormData]=useState({'username':null , 'password':null , 'remember-me':false})
     const [response , setResponse]=useState(null)
     const handleInput = (event) =>{
         const {name , value} = event.target;
-        SetFormData({...formData , name:value})
+        SetFormData({...formData , [name]:value})
     }
     const handleChecked =(event)=>{
         const {name,checked}=event.target
-        SetFormData({...formData , name:value})
+        SetFormData({...formData , [name]:value})
+    }
+    
+    async function handleSubmit(event)
+    {
+        event.preventDefault();
+        try{
+            const res=await fetch("http://localhost/chat-app-server/loginAuth.php",{
+                method:"Post",
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify(formData),
+            });
+            const alert_data = await res.json();
+            console.log(alert_data)
+            const alert_f=alerts[alert_data['alert_type']]
+            const alert_title=alert_data['title']
+            const alert_desc=alert_data['desc']
+            
+            alert_f(alert_title,alert_desc,5000,'OK',null)
+            if(alert_data['r_type']=="s"){navigate("/dashboard");}
+        }catch(error)
+        {
+            console.log(error)
+            // console.error(error)
+        }
     }
     return(
-        <form method="post" className="mb-5 mt-1">
+        
+        <form onSubmit={handleSubmit} className="mb-5 mt-1">
             <div className='d-flex justify-content-center  '>
                 <div className='d-flex flex-column align-items-center header'>
                     <img src={login_logo}/>
@@ -28,12 +59,15 @@ function Login()
                 <div className="mb-4 contents">
                     <label className="form-label label" id="username-label">Username</label>
                     <input 
+                        data-toggle="tooltip"
+                        title="should be atleast 8 characters only english letters and numbers"
                         onChange={handleInput}
                         type="text" className="form-control input" 
                         name='username'
+                        id='login-username'
                         placeholder="Enter Your Username" 
                         aria-describedby="username-label" />
-                </div>
+                </div> 
                 <div className="mb-3 contents">
                     <label className="form-label label" id="password-label">Password</label>
                     <input 
@@ -75,8 +109,6 @@ function Login()
                 </Link>
             </div>
         </form>
-        
-
     )
 
 }
