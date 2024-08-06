@@ -58,3 +58,18 @@
 
   }
 // ========================= signup css ==============================
+.show-pass{
+    background-color: white;
+    color: black;
+}
+#show-pass{
+    background-color: rgba(212, 208, 208, 0.822);
+    color: black;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius:0px 10px 10px 0px ;
+    &:hover{
+        cursor: pointer;
+    }
+}

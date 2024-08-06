@@ -36,7 +36,7 @@ function Login()
             const alert_desc=alert_data['desc']
             
             alert_f(alert_title,alert_desc,5000,'OK',null)
-            if(alert_data['r_type']=="s"){navigate("/dashboard");}
+            if(alert_data['r_type']=="s"){navigate("/dashboard/info");}
         }catch(error)
         {
             console.log(error)
@@ -71,6 +71,8 @@ function Login()
                 <div className="mb-3 contents">
                     <label className="form-label label" id="password-label">Password</label>
                     <input 
+                        data-toggle="tooltip"
+                        title="should be atleast 8 characters only english letters and numbers"
                         onChange={handleInput}
                         type="text" className="form-control input" 
                         name='password'
