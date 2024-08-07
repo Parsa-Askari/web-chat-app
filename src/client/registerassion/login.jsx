@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import login_logo from './assets/login_avatar.png';
 import { useState } from 'react';
 import { alerts } from '../../utils/alerts';
 import { useNavigate } from "react-router-dom";
-import { Tooltip, OverlayTrigger, Form } from 'react-bootstrap';
+import Cookies from 'universal-cookie';
 function Login()
 {
     const navigate = useNavigate();
@@ -15,32 +15,32 @@ function Login()
     }
     const handleChecked =(event)=>{
         const {name,checked}=event.target
-        SetFormData({...formData , [name]:value})
+        SetFormData({...formData , [name]:checked})
     }
     
     async function handleSubmit(event)
     {
         event.preventDefault();
+        console.log(JSON.stringify(formData))
         try{
             const res=await fetch("http://localhost/chat-app-server/loginAuth.php",{
                 method:"Post",
+                credentials: 'include',
                 headers:{
                     'Content-Type': 'application/json',
                 },
                 body : JSON.stringify(formData),
             });
             const alert_data = await res.json();
-            console.log(alert_data)
             const alert_f=alerts[alert_data['alert_type']]
             const alert_title=alert_data['title']
             const alert_desc=alert_data['desc']
-            
             alert_f(alert_title,alert_desc,5000,'OK',null)
+            console.log(alert_data)
             if(alert_data['r_type']=="s"){navigate("/dashboard/info");}
         }catch(error)
         {
             console.log(error)
-            // console.error(error)
         }
     }
     return(
@@ -84,10 +84,9 @@ function Login()
                 <div className="row mb-2">
                     <div className="col-6 mb-2">
                         <div className="d-flex justify-content-center form-check contents ">
-                            <input onChange={handleChecked} className="form-check-input" type="checkbox" value="" id="remember-me" />
+                            <input onChange={handleChecked} name="remember-me" className="form-check-input" type="checkbox" value="" id="remember-me" />
                             <label 
                                 className="form-check-label label px-1 align-self-center" 
-                                name="remember-me"
                                 htmlFor="remember-me">
                                 Remember Me
                             </label>
