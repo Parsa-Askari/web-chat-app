@@ -10,19 +10,27 @@ function InfoMainContent()
         {
             try{
                 const res=await fetch("http://localhost/chat-app-server/get_session.php",{
-                    method:"POST",
+                    method:"GET",
                     credentials: 'include',
                     headers:{
                         'Content-Type': 'application/json',
                     },
-                    body : JSON.stringify({"cols":["username"]}),
-                });
-                const out=await res.json();
                 
-            
+                });
+                const user_data=await res.json();
+                if(user_data['status']=="s")
+                {
+                    setResponse({
+                        "f_name":user_data['f_name'],
+                        "l_name":user_data['l_name'],
+                        "username":user_data['username'],
+                        "email":user_data['email'],
+                        'created_at':user_data['created_at']})
+                }
+                
             }catch(error)
             {
-                console.log(1)
+                console.log(error)
             }
         }
         check_cookie();
@@ -37,7 +45,7 @@ function InfoMainContent()
                             First Name
                         </div>
                         <div className="info__box">
-                            1
+                            {response['f_name']}
                         </div>
                     </div>
                     <div className="col info">
@@ -45,7 +53,7 @@ function InfoMainContent()
                             Last Name
                         </div>
                         <div className="info__box">
-                            2
+                        {response['l_name']}
                         </div>
                     </div>
                 </div>
@@ -55,7 +63,7 @@ function InfoMainContent()
                             Email
                         </div>
                         <div className="info__box">
-                            1
+                            {response['email']}
                         </div>
                     </div>
                     <div className="col info">
@@ -63,7 +71,7 @@ function InfoMainContent()
                             Username
                         </div>
                         <div className="info__box">
-                            2
+                            {response['username']}
                         </div>
                     </div>
                 </div>
@@ -73,7 +81,7 @@ function InfoMainContent()
                             Account Created At
                         </div>
                         <div className="info__box" id="info-date">
-                            1
+                            {response['created_at']}
                         </div>
                     </div>
                 </div>

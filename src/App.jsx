@@ -1,7 +1,7 @@
 import { Login } from "./client/registerassion/login"
 import { Signup } from "./client/registerassion/signup"
 import { Outlet, Link } from 'react-router-dom';
-import './App.scss'
+import './App.scss '
 function Registraition(props)
 {
     return(
