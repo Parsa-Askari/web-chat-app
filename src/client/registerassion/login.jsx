@@ -3,7 +3,6 @@ import login_logo from './assets/login_avatar.png';
 import { useState } from 'react';
 import { alerts } from '../../utils/alerts';
 import { useNavigate } from "react-router-dom";
-import Cookies from 'universal-cookie';
 function Login()
 {
     const navigate = useNavigate();

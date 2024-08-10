@@ -1,40 +1,10 @@
 import "./styles/Info.scss";
-import { useEffect , useState } from "react";
+
+import { GetDataFromServer ,ResponseHook} from "../../hooks/infoHooks";
 function InfoMainContent()
 {
-    const[response,setResponse]=useState({"f_name":'',"l_name":'',
-                                        "username":'',"email":'',
-                                        'created_at':''})
-    useEffect (()=>{
-        async function check_cookie()
-        {
-            try{
-                const res=await fetch("http://localhost/chat-app-server/get_session.php",{
-                    method:"GET",
-                    credentials: 'include',
-                    headers:{
-                        'Content-Type': 'application/json',
-                    },
-                
-                });
-                const user_data=await res.json();
-                if(user_data['status']=="s")
-                {
-                    setResponse({
-                        "f_name":user_data['f_name'],
-                        "l_name":user_data['l_name'],
-                        "username":user_data['username'],
-                        "email":user_data['email'],
-                        'created_at':user_data['created_at']})
-                }
-                
-            }catch(error)
-            {
-                console.log(error)
-            }
-        }
-        check_cookie();
-    },[])
+    const[response,setResponse]=ResponseHook()
+    GetDataFromServer(setResponse)
     return (
         
         <section className='row' id="info-section">
