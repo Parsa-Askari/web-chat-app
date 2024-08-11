@@ -1,23 +1,33 @@
 import "./styles/Chats.scss";
-import { GetDataFromServer ,ResponseHook} from "../../hooks/infoHooks";
+import { GetDataFromServer } from "../../hooks/chatsHooks"; 
 import { NewChatBtn } from "../../components/UI/buttons";
+import { useState } from "react";
+function EmptyChat()
+{
+    return(
+        <div className="no-chat">
+            <div id="header">
+                <h2>No Chats Yet :(</h2>
+            </div>
+            <div id="body">
+                <button className="btn btn-primary">
+                    Start A new Chat
+                </button>
+            </div>
+        </div>
+    )
+}
 function ChatsMainContent()
 {
-    const[response,setResponse]=ResponseHook()
-    GetDataFromServer(setResponse)
+    const[chatsList,SetChatsList]=useState({});
+    GetDataFromServer(SetChatsList)
     return (
         <section className='row' id="chats-section">
             <div className="content " id="main-chats-content">
-                <div className="no-chat">
-                    <div id="header">
-                        <h2>No Chats Yet :(</h2>
-                    </div>
-                    <div id="body">
-                        <button className="btn btn-primary">
-                            Start A new Chat
-                        </button>
-                    </div>
-                </div>
+                {Object.keys(chatsList).length>0 ? "hey":
+                    <EmptyChat />
+                }
+                
             </div>
             
         </section>

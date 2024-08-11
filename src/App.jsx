@@ -1,7 +1,6 @@
-import { Login } from "./client/registerassion/login"
-import { Signup } from "./client/registerassion/signup"
 import { Outlet, Link } from 'react-router-dom';
 import './App.scss'
+import { memo } from "react";
 function Registraition(props)
 {
     return(
@@ -21,4 +20,4 @@ function Registraition(props)
         
     )
 }
-export default Registraition;
+export default memo(Registraition);

@@ -9,7 +9,7 @@ const NewChatBtn = styled.button`
 const OptionBtn = styled.div`
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: ${props=> props.activate==props.id ? '#0AF7FF' : 'white'};
     width: 100%;
     height: 30px;
     margin-bottom: 10px;
@@ -19,8 +19,9 @@ const OptionBtn = styled.div`
         cursor: pointer;
         font-size: 18px;
     }
-    &__icon{
-        margin-right: 10px;
+    & span{
+        margin-right:10px
     }
 `
+
 export {NewChatBtn,OptionBtn}

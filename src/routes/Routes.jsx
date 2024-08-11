@@ -1,8 +1,8 @@
 import { Route ,Routes } from 'react-router-dom';
 import Registraition from '../App.jsx';
-import { Login } from '../client/registerassion/login.jsx';
-import { Signup } from '../client/registerassion/signup.jsx';
-import { HomeRender } from '../client/userDashboard/Home.jsx';
+import Login from '../client/registerassion/login.jsx';
+import Signup  from '../client/registerassion/signup.jsx';
+import  HomeRender  from '../client/userDashboard/Home.jsx';
 import {InfoMainContent,InfoHeaderContnet} from "../client/userDashboard/Info.jsx";
 import { ChatsMainContent,ChatsHeaderContnet } from '../client/userDashboard/Chats.jsx';
 const AppRoutes = (

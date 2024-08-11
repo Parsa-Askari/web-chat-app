@@ -3,6 +3,7 @@ import login_logo from './assets/login_avatar.png';
 import { useState } from 'react';
 import { alerts } from '../../utils/alerts';
 import { useNavigate } from "react-router-dom";
+import { memo } from 'react';
 function Login()
 {
     const navigate = useNavigate();
@@ -112,4 +113,4 @@ function Login()
     )
 
 }
-export {Login}
+export default memo(Login)

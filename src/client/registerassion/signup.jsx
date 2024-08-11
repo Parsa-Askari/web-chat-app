@@ -5,6 +5,7 @@ import { alerts } from '../../utils/alerts';
 import { useNavigate } from "react-router-dom";
 import { faEyeSlash , faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { memo } from 'react';
 function Signup()
 {
     const navigate = useNavigate();
@@ -187,4 +188,4 @@ function Signup()
     )
 
 }
-export {Signup}
+export default memo(Signup)

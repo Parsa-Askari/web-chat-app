@@ -4,7 +4,9 @@ import profilr_avatar from "./assets/profile.png";
 import classNames from 'classnames';
 import { HandleOptions } from '../../hooks/mainHooks';
 import { useNavigate } from "react-router-dom";
-import { NewChatBtn , OptionBtn} from '../../components/UI/buttons';
+import { NewChatBtn , OptionBtn } from '../../components/UI/buttons';
+import { useState ,useEffect} from 'react';
+import { memo } from 'react';
 function Sidbar({option})
 {
     const navigate=useNavigate()
@@ -27,22 +29,22 @@ function Sidbar({option})
                 </div>
 
                 <div className='options' onClick={(event)=>HandleOptions(navigate,event)}>
-                    <OptionBtn className={classNames('option',{'active':option=="info"})} id='info'>
+                    <OptionBtn activate={option} className='option' id='info'>
                         <div>
                             <span className='fa fa-info-circle option__icon'></span>Personal Info 
                         </div>
                     </OptionBtn>
-                    <OptionBtn className={classNames('option',{'active':option=="chats"})} id='chats'>
+                    <OptionBtn activate={option} className='option' id='chats'>
                         <div>
                             <span className='fa fa-commenting-o option__icon'></span>Chats
                         </div>
                     </OptionBtn>
-                    <OptionBtn className={classNames('option',{'active':option=="contacts"})} id='contacts'>
+                    <OptionBtn activate={option} className='option' id='contacts'>
                         <div>
                             <span className='fa  fa-address-book-o option__icon'></span>Contacts
                         </div>
                     </OptionBtn>
-                    <OptionBtn className={classNames('option',{'active':option=="settings"})} id='settings'>
+                    <OptionBtn activate={option} className='option'  id='settings'>
                         <div>
                             <span className='fa fa-cog option__icon'></span>settings
                         </div>
@@ -79,4 +81,4 @@ function HomeRender({option,HeaderContnet})
         </div>
     )
 }
-export {HomeRender}
+export default memo(HomeRender)
