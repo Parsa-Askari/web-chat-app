@@ -21,7 +21,11 @@ main{
 }
 aside{
     background-color: #D9D9D9;
-    
+}
+@media screen and (max-width:570px) {
+    aside{
+        display: none;
+    }
 }
 header{
     background-color: #120D0D;
@@ -40,7 +44,16 @@ header{
 }
 .header-title{
     text-align: center;
-    
+}
+#menu-bg{
+    background-color: rgb(187, 19, 56);
+    width: 80px;
+    font-size: 50px;
+    text-align: center;
+    &:hover{
+        cursor: pointer;
+        color: rgb(37, 85, 173);
+    }
 }
 // ====================== sidebar ====================
 aside{

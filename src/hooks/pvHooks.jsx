@@ -14,6 +14,7 @@ async function getChatData(SetChatHistory,username)
         });
         const history_json=await history.json();
         SetChatHistory(history_json)
+        
     }catch(error){console.log(error)}
 }
 
@@ -43,5 +44,28 @@ const GetDataFromServer=(SetUsername,SetChatHistory)=>{
         getUserData()
     },[])
 }
-
-export {GetDataFromServer};
+const RecordMsg = (SetUserMsg,event)=>{
+    const value=event.target.value
+    SetUserMsg(value)
+}
+const handleSendMsg=async(msg,username,SetChatHistory,SetUserMsg)=>{
+    try{
+        await fetch("http://localhost/chat-app-server/insert_to_chat.php",{
+            method:"POST",
+            credentials:"include",
+            headers:{
+                'Content-Type' : 'application/json',
+            },
+            body:JSON.stringify({"username":username,
+                                "second_user":localStorage.getItem("chat_target"),
+                                "msg":msg})
+        });
+        getChatData(SetChatHistory,username)
+        SetUserMsg("")
+        
+    }catch(error)
+    {
+        console.log(error);
+    }
+}
+export {GetDataFromServer,handleSendMsg,RecordMsg};

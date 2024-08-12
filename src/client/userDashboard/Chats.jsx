@@ -22,15 +22,15 @@ function ChatItem(props)
 {
     const navigate=useNavigate();
     return(
-        <div onClick={(event)=>handleChatSelect(event,navigate)} className="item" id={props.second_user} >
-            <div id="header">
+        <div onClick={(event)=>handleChatSelect(event,navigate)} className="row item" id={props.second_user} >
+            <div className="col-3 col-sm-3 d-flex align-items-center" id="header">
                 <div id="chat-profile-box"></div>
             </div>
-            <div id="body" className="secondry">
+            <div id="body" className="secondry col-9 col-sm-6 d-flex justify-content-center">
                 <h3 id="second-name">{props.second_user}</h3>
                 <p>{props.msg}</p>
             </div>
-            <div id="time">
+            <div id="time" className="d-none d-sm-flex col-3 col-sm-3 d-flex align-items-center">
                 <p>{props.sent_at}</p>
             </div>
         </div>
@@ -79,7 +79,7 @@ function ChatsMainContent()
 function ChatsHeaderContnet()
 {
     return (
-        <h3 className="header-title">
+        <h3 className="header-title text-end">
             Chats
         </h3>
     )

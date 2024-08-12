@@ -1,9 +1,9 @@
 import "./styles/Pv.scss";
 import { useState } from "react";
-import { GetDataFromServer } from "../../hooks/pvHooks";
+import { GetDataFromServer ,handleSendMsg ,RecordMsg} from "../../hooks/pvHooks";
 function FriendMsgBox(props){
     return(
-        <div className="row">
+        <div className="row mb-3">
             <div className="col">
                 <div className="second-chat-box">
                     <div id="header">
@@ -33,7 +33,7 @@ function FriendMsgBox(props){
 function MyMsgBox(props)
 {
     return(
-        <div className="row">
+        <div className="row mb-3">
             <div className="col"></div>  
             <div className="col">
                 <div className="first-chat-box">
@@ -64,6 +64,7 @@ function PvMainContent()
 {
     const[username,SetUsername]=useState("")
     const[chatHistory,SetChatHistory]=useState([])
+    const[userMsg,SetUserMsg]=useState("")
     GetDataFromServer(SetUsername,SetChatHistory)
     return (
         <section id="pv-section">
@@ -90,8 +91,8 @@ function PvMainContent()
 
             <div className="row send-box d-flex justify-content-center">
                 <div className="col d-flex align-items-center">
-                    <input className="send" type="text" />
-                    <div className="send-btn btn btn-dark fa fa-paper-plane"></div>
+                    <input onChange={(event)=>RecordMsg(SetUserMsg,event)} className="send" type="text" value={userMsg} />
+                    <div onClick={()=>handleSendMsg(userMsg,username,SetChatHistory,SetUserMsg)} className="send-btn btn btn-dark fa fa-paper-plane"></div>
                 </div>
             </div>
         </section>

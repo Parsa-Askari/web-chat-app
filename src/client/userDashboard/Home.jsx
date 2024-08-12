@@ -59,7 +59,13 @@ function Header({children})
     return(
         
         <header className='row'>
-            {children}
+            <div className='col-2 d-block d-sm-none' >
+                <div id='menu-bg'><span className='fa fa-bars' id='hamb-btn'></span></div>
+            </div>
+            <div className='col-10 col-sm-2'>
+                {children}
+            </div>
+            
         </header>
     )
 }
@@ -70,7 +76,7 @@ function HomeRender({option,HeaderContnet})
             <main className='container-md main-container'>
                 <div className='row '>
                     <Sidbar option={option}/>
-                    <div className='col-9 '>
+                    <div className='col-12 col-sm-9'>
                         <Header>
                             <HeaderContnet />
                         </Header>    
