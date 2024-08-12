@@ -5,16 +5,16 @@ const HandleOptions =(nav,event)=>{
     }
     const id=targetElement.hasAttribute("id") ? targetElement.id : "";
     if(id=="info"){
-        nav("../dashboard/info")
+        nav("/dashboard/info")
     }
     else if(id=="chats"){
-        nav("../dashboard/chats")
+        nav("/dashboard/chats")
     }
     else if(id=="contacts"){
-        nav("../dashboard/contacts")
+        nav("/dashboard/contacts")
     }
-    else if(id=="settings"){
-        nav("../dashboard/settings")
+    else if(id=="logout"){
+        nav("/dashboard/logout")
     }
     else{
         console.log("path not found in navigate");

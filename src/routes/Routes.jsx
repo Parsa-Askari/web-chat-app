@@ -5,6 +5,8 @@ import Signup  from '../client/registerassion/signup.jsx';
 import  HomeRender  from '../client/userDashboard/Home.jsx';
 import {InfoMainContent,InfoHeaderContnet} from "../client/userDashboard/Info.jsx";
 import { ChatsMainContent,ChatsHeaderContnet } from '../client/userDashboard/Chats.jsx';
+import { LogoutMainContent,LogoutHeader } from '../client/userDashboard/Logout.jsx';
+import { PvMainContent,PvHeaderContnet } from '../client/userDashboard/Pv.jsx';
 const AppRoutes = (
     <Routes>
         <Route path="/" element={<Registraition/>}>
@@ -17,7 +19,12 @@ const AppRoutes = (
         <Route path='/dashboard/chats' element={<HomeRender option={"chats"} HeaderContnet={ChatsHeaderContnet} />} >
             <Route index element={<ChatsMainContent />} />
         </Route>
-
+        <Route path='/dashboard/chats/pv' element={<HomeRender option={"chats"} HeaderContnet={PvHeaderContnet} />} >
+            <Route index element={<PvMainContent />} />
+        </Route>
+        <Route path='/dashboard/logout' element={<HomeRender option={"logout"} HeaderContnet={LogoutHeader} />} >
+            <Route index element={<LogoutMainContent />} />
+        </Route>
     </Routes>
 
 );

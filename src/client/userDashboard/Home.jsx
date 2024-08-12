@@ -44,9 +44,9 @@ function Sidbar({option})
                             <span className='fa  fa-address-book-o option__icon'></span>Contacts
                         </div>
                     </OptionBtn>
-                    <OptionBtn activate={option} className='option'  id='settings'>
+                    <OptionBtn activate={option} className='option'  id='logout'>
                         <div>
-                            <span className='fa fa-cog option__icon'></span>settings
+                            <span className='fa fa-sign-out option__icon'></span>Logout
                         </div>
                     </OptionBtn>
                 </div>

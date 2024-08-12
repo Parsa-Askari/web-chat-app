@@ -1,0 +1,99 @@
+#pv-section{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: calc(650px - 96px);
+}
+.msgs{
+    overflow-y: auto;
+    overflow-x:hidden;
+    height: 90%;
+}
+
+.send{
+    width: 90%;
+    border-radius: 20px;
+    margin-right: 10px;
+    height: 40px;
+}
+.send-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    &:hover{
+        cursor: pointer;
+    }
+    
+}
+.second-chat-box{
+    background-color: white;
+    border-radius: 10px;
+    & #header{
+        background-color: #F79EF9;
+        height: 50px;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & .pv-profile-box{
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        & .profile-box{
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+            width: 40%;
+        }
+        & .pv-sent-time{
+            width: 70%;
+            text-align: end;
+            padding-right: 20px;
+        }
+    }
+    & #body{
+        padding: 10px;
+    }
+}
+.first-chat-box{
+    background-color: white;
+    border-radius: 10px;
+    & #header{
+        background-color: #9EE5F9;
+        height: 50px;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & .pv-profile-box{
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        & .profile-box{
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+            width: 40%;
+        }
+        & .pv-sent-time{
+            width: 70%;
+            text-align: end;
+            padding-right: 20px;
+        }
+    }
+    & #body{
+        padding: 10px;
+    }
+}

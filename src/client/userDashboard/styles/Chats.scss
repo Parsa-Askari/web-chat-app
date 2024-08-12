@@ -9,6 +9,7 @@
     border-radius: 10px;
     padding-top: 70px;
     padding-bottom: 70px;
+    overflow-y: auto
 }
 #chats-section{
     padding-top: 40px;
@@ -16,7 +17,7 @@
     padding-left: 30px;
     padding-right: 30px;
     height: calc(650px - 96px);
-    overflow-y: auto
+    
 
 }
 .no-chat{
@@ -29,5 +30,62 @@
     & #body{
         width: 100%;
     }
+}
+.items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
+    & .item
+    {
+        display: flex;
+        width: 90%;
+        height: 110px;
+        margin-bottom: 20px;
+        background-color: white;
+        text-align: center;
+        border-radius: 20px;
+        
+        &  #header{
+            display: flex;
+            align-items: center;
+            width: 20%;
+            border-radius: 20px 0 0 20px;
+            margin-right: 10px;
+        }
+        & #body{
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            & p{
+                color: gray;
+            }
+        }
+        & #time{
+            display: flex;
+            align-items: center;
+            color:gray;
+            margin-top: 20px;
+            
+        }
+        & #chat-profile-box
+        {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(177, 147, 147);
+            margin-left: 10px;
+           
+            border-radius: 50%;
+            
+        }
+        
+        &:hover{
+            cursor: pointer;
+            background-color: wheat;
+        }
+
+    }
 }

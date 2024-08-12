@@ -27,20 +27,18 @@ const GetDataFromServer=(SetChatsList)=>{
                 });
                 const res=await chatsList.json()
                 SetChatsList(res)
-                console.log(res)
+                
             }catch(error)
             {
                 console.log(error);
             }
-            
         }
-        
         getUserData();
-        return ()=>{
-            SetChatsList({})
-        }
-
     },[])    
 }
-
-export {GetDataFromServer};
+const handleChatSelect= (event,nav)=>{
+    const id=event.target.closest(".item").id
+    localStorage.setItem("chat_target",id);
+    nav("/dashboard/chats/pv")
+}
+export {GetDataFromServer,handleChatSelect};
