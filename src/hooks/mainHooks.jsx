@@ -1,4 +1,4 @@
-const HandleOptions =(nav,event)=>{
+const handleOptions =(nav,event)=>{
     const targetElement=event.target.closest(".option");
     if(targetElement==null){
         return ;
@@ -20,4 +20,15 @@ const HandleOptions =(nav,event)=>{
         console.log("path not found in navigate");
     }
 }
-export {HandleOptions};
+const handleMobileMenu=(event,SetAsideClassname)=>{
+    const id=event.target.closest("div").id
+    console.log(id)
+    if(id=="close-mobile-menu"){
+        SetAsideClassname("desktop")
+    }
+    else if(id=="mobile-menu"){
+        SetAsideClassname("mobile")
+    }
+    
+}
+export {handleOptions,handleMobileMenu};

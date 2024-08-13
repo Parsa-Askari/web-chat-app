@@ -2,16 +2,20 @@ import { Outlet } from 'react-router';
 import './styles/Home.scss';
 import profilr_avatar from "./assets/profile.png";
 import classNames from 'classnames';
-import { HandleOptions } from '../../hooks/mainHooks';
+import { handleOptions ,handleMobileMenu } from '../../hooks/mainHooks';
 import { useNavigate } from "react-router-dom";
 import { NewChatBtn , OptionBtn } from '../../components/UI/buttons';
 import { useState ,useEffect} from 'react';
 import { memo } from 'react';
-function Sidbar({option})
+function Sidbar({option,asideClassname,SetAsideClassname})
 {
     const navigate=useNavigate()
+    
+    const sidebar_name={"desktop":"sidebar col-3 d-none d-sm-flex",
+                        "mobile": "sidebar mobile mt-5"
+    }
     return (
-        <aside className='col-3'>
+        <aside className={sidebar_name[asideClassname]}>
             <div className='content' id='sidebar-content'>
                 <div className='img-box' id='profile-avatar-box'>
                     <img className='img' id='profilr-avatar' src={profilr_avatar}/>
@@ -28,7 +32,7 @@ function Sidbar({option})
                     <input type='text' className='form-control' id='search' placeholder='Search' aria-describedby="search-label"/>
                 </div>
 
-                <div className='options' onClick={(event)=>HandleOptions(navigate,event)}>
+                <div className='options' onClick={(event)=>handleOptions(navigate,event)}>
                     <OptionBtn activate={option} className='option' id='info'>
                         <div>
                             <span className='fa fa-info-circle option__icon'></span>Personal Info 
@@ -50,17 +54,25 @@ function Sidbar({option})
                         </div>
                     </OptionBtn>
                 </div>
+                <div id='close-mobile-menu' onClick={(event)=>handleMobileMenu(event,SetAsideClassname)}>
+                    <p>
+                        <i className="fa fa-chevron-circle-left" ></i>
+                    </p>
+                    
+                </div>
+                
             </div>
         </aside>
     )
 }
-function Header({children})
+function Header({children,SetAsideClassname})
 {
+    
     return(
         
         <header className='row'>
-            <div className='col-2 d-block d-sm-none' >
-                <div id='menu-bg'><span className='fa fa-bars' id='hamb-btn'></span></div>
+            <div  className='col-2 d-block d-sm-none' id='mobile-menu' onClick={(event)=>handleMobileMenu(event,SetAsideClassname)}>
+                <p id='menu-bg' className='mt-2'><span className='fa fa-bars' id='hamb-btn'></span></p>
             </div>
             <div className='col-10 col-sm-2'>
                 {children}
@@ -71,13 +83,14 @@ function Header({children})
 }
 function HomeRender({option,HeaderContnet})
 {
+    const [asideClassname,SetAsideClassname]=useState("desktop")
     return(
         <div className='body pt-5'>
             <main className='container-md main-container'>
-                <div className='row '>
-                    <Sidbar option={option}/>
+                <div className='row'>
+                    <Sidbar option={option} asideClassname={asideClassname} SetAsideClassname={SetAsideClassname}/>
                     <div className='col-12 col-sm-9'>
-                        <Header>
+                        <Header SetAsideClassname={SetAsideClassname}>
                             <HeaderContnet />
                         </Header>    
                         <Outlet />
