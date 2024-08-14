@@ -131,9 +131,7 @@ aside{
     }
 }.sidebar{
     background-color: #D9D9D9;
-    & #close-mobile-menu{
-        display: none;
-    }
+    height: 650px;
 }
 .mobile{
     display: flex;

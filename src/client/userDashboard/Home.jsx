@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router';
 import './styles/Home.scss';
 import profilr_avatar from "./assets/profile.png";
-import classNames from 'classnames';
 import { handleOptions ,handleMobileMenu } from '../../hooks/mainHooks';
 import { useNavigate } from "react-router-dom";
 import { NewChatBtn , OptionBtn } from '../../components/UI/buttons';
@@ -54,7 +53,7 @@ function Sidbar({option,asideClassname,SetAsideClassname})
                         </div>
                     </OptionBtn>
                 </div>
-                <div id='close-mobile-menu' onClick={(event)=>handleMobileMenu(event,SetAsideClassname)}>
+                <div id='close-mobile-menu' className='d-sm-none d-flex' onClick={(event)=>handleMobileMenu(event,SetAsideClassname)}>
                     <p>
                         <i className="fa fa-chevron-circle-left" ></i>
                     </p>
