@@ -9,7 +9,7 @@ import { memo } from 'react';
 function Sidbar({option,asideClassname,SetAsideClassname})
 {
     const navigate=useNavigate()
-    
+    // ss
     const sidebar_name={"desktop":"sidebar col-3 d-none d-sm-flex",
                         "mobile": "sidebar mobile mt-5"
     }
